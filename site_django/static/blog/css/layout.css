@@ -1,0 +1,54 @@
+.header {
+    position: fixed;
+    width: 100%;
+    border-bottom: 1px solid;
+    z-index: 1;
+    height: 8%;
+    display: flex;
+    background: #16cc4a;
+}
+
+.left_side, .right_side, .middle {
+    padding: 5px;
+    display: flex;
+    align-items: center;
+}
+
+.left_side {
+    width: 30%;
+    background: white;
+}
+
+.middle {
+    width: 40%;
+    justify-content: center;
+    background: linear-gradient(-90deg, lightblue, white)
+}
+
+.right_side {
+    width: 30%;
+    justify-content: flex-end;
+    background: lightblue;
+}
+
+.btn {
+    margin-left: 2%;
+}
+.log_out_form {
+    margin-right: 2%;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+	background: linear-gradient(90deg, #cfecd0, #a0cea7, #9ec0db);
+
+}
+.logo{
+width: 60;
+}
+.title{
+    font-weight: bold;
+    font-size: 30px;
+    margin-left: 10px;
+}
