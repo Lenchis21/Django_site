@@ -11,8 +11,6 @@ from .models import BlogPost, Comment
 
 def index(request):
     blogs = BlogPost.objects.all()
-
-
     search = request.GET.get("search")
 
     if search:
