@@ -41,8 +41,8 @@ form{
 }
 .pagination{
     display: flex;
-    justify-content: center;
-    padding: 1em;
+    justify-content: end;
+    padding-right: 5em;
 }
 .pagination  .step-links{
     display: flex;
@@ -70,4 +70,31 @@ form{
 .pagination a.disabled{
     point-events: none;
     color: #6c757d;
+}
+.functions{
+    display: flex;
+    justify-content: end;
+}
+.btn-create{
+    float: right;
+    margin: 4em 5em 2em 0;
+}
+.form-search{
+    justify-content: left;
+    padding-top: 46px;
+    padding-left: 2%;
+}
+.input-search{
+    width: 250px;
+    margin-left: 1.1%
+}
+.btn-search{
+    margin-left: 1%;
+}
+.sort-date{
+    margin-left: 3%;
+}
+.sort-date a{
+   font-weight: 700;
+   text-decoration: none;
 }

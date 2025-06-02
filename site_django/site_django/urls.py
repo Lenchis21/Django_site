@@ -6,8 +6,8 @@ from django.conf import settings
 from django.conf.urls.static import static
 
 urlpatterns = [
-    path("admin/", admin.site.urls),
-    path("", include("blog.urls"), name = "blog"),
+    path("admin/", admin.site.urls),  # Панель администратора
+    path("", include("blog.urls"), name = "blog"), # Подключаем маршруты "Блога"
     path("users/", include("users.urls"), name = "users"),
 ] + static(settings.STATIC_URL, document_root = settings.STATIC_ROOT)
 

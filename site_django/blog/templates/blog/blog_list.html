@@ -9,13 +9,20 @@
 
  {% block content %}
     {% if perms.blog.add_blogpost %}
-        <a class="btn btn-success" href="{% url 'blog:create_blog' %}" style="margin: 1% 0 0 2%">Создать блог</a>
+        <a class="btn btn-success btn-create" href="{% url 'blog:create_blog' %}">Создать блог</a>
     {% endif %}
 
-   <form style="padding-top: 20px" method="GET">
-       <input type="text" name="search" placeholder="Поиск">
-       <input type="submit"  value="Найти">
+   <form class = "form-group form-search" method="GET">
+       <input type="text" name="search" class="form-control input-search" style="200px"  placeholder="Поиск">
+       <input type="submit" class="btn btn-primary btn-search" value="Найти">
    </form>
+
+    <div class="sort-date">
+        Сортировать по дате:
+        <a href="?sort=newest{% if search_query %}&search={{ search_query }}{% endif %}">Новые</a> |
+        <a href="?sort=oldest{% if search_query %}&search={{ search_query }}{% endif %}">Старые</a>
+    </div>
+
    <div class="list">
      {% for blog in page_obj %}
         <div class="blog"
@@ -28,10 +35,11 @@
             </div>
             <div class="blog_info">
                 <a> {{blog.content | truncatechars:100}}</a>
+                <a style="color: gray">{{blog.date_published}}</a>
             </div>
             <a style="color: gray"> by {{blog.author}}</a>
             {% if blog.author == request.user or request.user.is_superuser %}
-                <a class="btn btn-outline-warning"  href="{% url 'blog:update_blog' pk=blog.id %}" style="margin: 1% 0 0 2%" ><i class="fa fa-pen"></i></a>
+                 <a class="btn btn-outline-warning"  href="{% url 'blog:update_blog' pk=blog.id %}" style="margin: 1% 0 0 2%" ><i class="fa fa-pen"></i></a>
                  <a class="btn btn-outline-danger"  href="{% url 'blog:delete_blog' pk=blog.id %}" style="margin: 1% 0 0 2%" ><i class="fa fa-trash"></i></a>
             {% endif %}
         </div>

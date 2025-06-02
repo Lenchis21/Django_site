@@ -16,14 +16,25 @@ def index(request):
     if search:
         blogs = blogs.filter(title__icontains=search)
 
+#-----Сортировка по дате ------------------------------------------
+
+    sort_by = request.GET.get("sort")
+
+    if sort_by == 'newest':
+        blogs = blogs.order_by('-date_published')  # Сначала новые
+    elif sort_by == 'oldest':
+        blogs = blogs.order_by('date_published')  # Сначала старые
+
+# ---------------------------------------------------------
     paginator = Paginator(blogs, per_page=5)
+
     page_number = request.GET.get("page")
     page_obj = paginator.get_page(page_number)
 
     title = "Главная страница"
-    return render(request, 'blog/blog_list.html', {"page_obj":page_obj, "title":title})
+    return render(request, 'blog/blog_list.html', {"page_obj":page_obj, "title":title, "sort_by": sort_by})
 
-def detail(request, pk):
+def blog_detail(request, pk):
     try:
         blog = BlogPost.objects.get(pk=pk)
 
